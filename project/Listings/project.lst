@@ -1,0 +1,56 @@
+C51 COMPILER V9.60.0.0   PROJECT                                                           10/03/2020 04:07:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\project.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\p
+                    -roject.lst) TABS(2) OBJECT(.\Objects\project.obj)
+
+line level    source
+
+   1          #include<AT89X51.h>
+   2          //#include "LiquidCrystal.h"
+   3              LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+*** ERROR C129 IN LINE 3 OF project.c: missing ';' before 'lcd'
+   4              
+   5              int Spoil = 9;
+   6              int Formalin = 8;
+   7              int redLed = 7;
+   8              int greenLed = 6;
+   9              
+  10              void setup()
+  11              {
+  12                pinMode(Spoil, INPUT);
+  13                pinMode(Formalin, INPUT);
+  14              }
+  15              
+  16              void loop()
+  17              {
+  18                if(digitalRead(Spoil) == HIGH)
+  19                {
+  20                  lcd.setCursor(0,0);
+  21                  lcd.print("Food Spoiled");
+  22                  digitalWrite(7, HIGH);
+  23                  digitalWrite(6, LOW);
+  24                  
+  25                }
+  26                if(digitalRead(Formalin) == HIGH)
+  27                {
+  28                  lcd.setCursor(0,0);
+  29                  lcd.print("Formalin Detected");
+  30                  digitalWrite(7, HIGH);
+  31                  digitalWrite(6, LOW);
+  32                  
+  33                }
+  34                else
+  35                {
+  36                  lcd.setCursor(0,0);
+  37                  lcd.print("Nothing Detected");
+  38                  digitalWrite(6, HIGH);
+  39                  digitalWrite(7, LOW);
+  40                }
+  41                //delay(500);
+  42                lcd.clear();
+  43              }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)
